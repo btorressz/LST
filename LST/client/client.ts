@@ -1,4 +1,4 @@
-//Client.ts 
+//Client.ts
 import * as web3 from '@solana/web3.js';
 import * as borsh from 'borsh';
 import * as spl from '@solana/spl-token';
@@ -60,6 +60,34 @@ const GlobalStateSchema = new Map([
   ],
 ]);
 
+// Function to validate a base58 string as a PublicKey
+function isValidPublicKey(publicKeyStr: string): boolean {
+  try {
+    new web3.PublicKey(publicKeyStr);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+// Replace with actual valid base58-encoded public keys
+const lstMintAddress = "<YOUR_LST_MINT_ADDRESS>"; // Example: "So11111111111111111111111111111111111111112"
+const globalStateAddress = "<YOUR_GLOBAL_STATE_ACCOUNT_ADDRESS>"; // Replace with actual public key
+
+// Validate the LST mint address
+if (!isValidPublicKey(lstMintAddress)) {
+  throw new Error("Invalid LST mint address. Make sure it is a valid base58-encoded string.");
+}
+
+// Validate the global state address
+if (!isValidPublicKey(globalStateAddress)) {
+  throw new Error("Invalid global state address. Make sure it is a valid base58-encoded string.");
+}
+
+// Convert the valid base58 strings to PublicKey objects
+const lstMintPubkey = new web3.PublicKey(lstMintAddress);
+const globalStatePubkey = new web3.PublicKey(globalStateAddress);
+
 // Function to fetch LST balance if LST mint exists
 async function getLSTBalance(walletPubkey: web3.PublicKey, mintPubkey: web3.PublicKey) {
   const tokenAccounts = await pg.connection.getTokenAccountsByOwner(walletPubkey, {
@@ -102,10 +130,8 @@ async function fetchGlobalState(globalStatePubkey: web3.PublicKey) {
   return deserializedGlobalState;
 }
 
-// Example: Fetch and display LST balance
-const lstMintPubkey = new web3.PublicKey("<YOUR_LST_MINT_ADDRESS>");
+// Fetch and display the LST balance
 await getLSTBalance(pg.wallet.publicKey, lstMintPubkey);
 
-// Example: Fetch and display global state
-const globalStatePubkey = new web3.PublicKey("<YOUR_GLOBAL_STATE_ACCOUNT_ADDRESS>");
+// Fetch and display the global state information
 await fetchGlobalState(globalStatePubkey);
