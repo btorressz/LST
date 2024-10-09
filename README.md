@@ -15,4 +15,17 @@ The LST program is built using Solana's native Rust SDK and Borsh for serializat
 - **Admin Management**: Allows proposing and accepting changes to the program's admin.
 - **Native Solana Staking**: Uses Solana's native staking functionality without any third-party dependencies.
 
+  ## Program Architecture
+
+### On-Chain Program
+
+The Solana program is written in Rust and performs the following tasks:
+
+- **Initialize Global State**: Sets up the initial state for the staking pool.
+- **Stake SOL and Mint LST**: Accepts SOL from the user, stakes it, and mints LST tokens.
+- **Auto-Compound Rewards**: Automatically compounds staking rewards to maximize yields.
+- **Withdraw SOL by Burning LST**: Burns LST tokens to redeem the equivalent amount of staked SOL.
+- **Redelegate Stake**: Allows for redelegation to a different validator to optimize staking rewards.
+- **Admin Management**: Enables admin changes with appropriate checks and access control.
+
 
