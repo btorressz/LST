@@ -15,7 +15,7 @@ The LST program is built using Solana's native Rust SDK and Borsh for serializat
 - **Admin Management**: Allows proposing and accepting changes to the program's admin.
 - **Native Solana Staking**: Uses Solana's native staking functionality without any third-party dependencies.
 
-  ## Program Architecture
+ ## Program Architecture
 
 ### On-Chain Program
 
