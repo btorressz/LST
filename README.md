@@ -28,4 +28,11 @@ The Solana program is written in Rust and performs the following tasks:
 - **Redelegate Stake**: Allows for redelegation to a different validator to optimize staking rewards.
 - **Admin Management**: Enables admin changes with appropriate checks and access control.
 
+  ### Client
+
+The client-side code is written in TypeScript and interacts with the Solana program using web3.js and Borsh serialization for communication with on-chain data. It includes the following components:
+
+- **`client.ts`**: A script for fetching the user's balance, global state, and LST balance, as well as performing various interactions with the program.
+- **`native.test.ts`**: Test cases for each program function, such as staking, withdrawing, auto-compounding, and admin management.
+
 
