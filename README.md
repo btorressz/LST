@@ -35,4 +35,15 @@ The client-side code is written in TypeScript and interacts with the Solana prog
 - **`client.ts`**: A script for fetching the user's balance, global state, and LST balance, as well as performing various interactions with the program.
 - **`native.test.ts`**: Test cases for each program function, such as staking, withdrawing, auto-compounding, and admin management.
 
+## Tech Stack
+
+The project uses the following technologies:
+
+- **Rust**: For writing the Solana on-chain program, which handles staking logic, rewards, and state management.
+- **TypeScript**: For writing client-side scripts that interact with the on-chain program using Solana's web3.js library.
+- **Native Solana**: The program directly uses native Solana features and does not rely on frameworks like Anchor.
+- **Solana Playground IDE**: An online IDE for building, deploying, and testing Solana programs and client-side scripts.
+
+## License 
+This Project is under the **MIT LICENSE** 
 
